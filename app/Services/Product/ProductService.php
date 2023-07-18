@@ -40,8 +40,18 @@ class ProductService implements ProductServiceInterface
      */
     public function destroy(int $id): bool
     {
-        $category = Product::query()->firstWhere('id', $id);
-        return $category->delete();
+        $product = Product::query()->firstWhere('id', $id);
+        $product->file()->delete();
+        return $product->delete();
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function addImage(array $images_id, int $product_id)
+    {
+        $product =  Product::query()->firstWhere('id', $product_id);
+        $product->file()->attach($images_id);
+        return $product->file;
+    }
 }

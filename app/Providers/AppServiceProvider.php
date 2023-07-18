@@ -6,6 +6,8 @@ use App\Services\Basket\BasketService;
 use App\Services\Basket\BasketServiceInterface;
 use App\Services\Category\CategoryService;
 use App\Services\Category\CategoryServiceInterface;
+use App\Services\File\FileService;
+use App\Services\File\FileServiceInterface;
 use App\Services\Product\ProductService;
 use App\Services\Product\ProductServiceInterface;
 use Illuminate\Support\ServiceProvider;
@@ -36,6 +38,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             BasketServiceInterface::class,
             BasketService::class
+        );
+        $this->app->bind(
+            FileServiceInterface::class,
+            FileService::class
         );
     }
 }

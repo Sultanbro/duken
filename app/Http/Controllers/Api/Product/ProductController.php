@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Product;
 
 use App\Http\Controllers\Controller;
 use App\Http\DTO\Product\ProductCreateDTO;
+use App\Http\Requests\Product\ImageRequest;
 use App\Http\Requests\Product\ProductFilterRequest;
 use App\Http\Requests\Product\ProductRequest;
 use App\Http\Resources\Product\ProductResource;
@@ -98,5 +99,14 @@ class ProductController extends Controller
             ->name($productFilterRequest->name)
             ->price($productFilterRequest->price)
             ->description($productFilterRequest->description));
+    }
+
+    /**
+     * @param ImageRequest $imageRequest
+     * @return mixed
+     */
+    public function addImage(ImageRequest $imageRequest)
+    {
+        return $this->productService->addImage($imageRequest->files_id, $imageRequest->product_id);
     }
 }

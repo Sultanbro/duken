@@ -28,4 +28,11 @@ interface ProductServiceInterface
      */
     public function destroy(int $id): bool;
 
+    /**
+     * @param array $images_id
+     * @param int $product_id
+     * @return mixed
+     */
+    public function addImage(array $images_id, int $product_id);
+
 }

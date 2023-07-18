@@ -13,6 +13,11 @@ class Product extends Model
 
     use HasFactory;
 
+    public function file()
+    {
+        return $this->belongsToMany(File::class);
+    }
+
     public function user()
     {
         return $this->belongsToMany(User::class);

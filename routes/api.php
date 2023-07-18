@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\Basket\BasketController;
 use App\Http\Controllers\Api\Category\CategoryController;
+use App\Http\Controllers\Api\File\ImageController;
 use App\Http\Controllers\Api\Product\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,5 @@ Route::middleware('admin')->resource('product', ProductController::class);
 Route::post('add/basket', [BasketController::class, 'inBasket']);
 Route::get('basket', [BasketController::class, 'index']);
 Route::post('delete/product/basket', [BasketController::class, 'deleteProductInBasket']);
+Route::post('upload/image', [ImageController::class, 'upload']);
+Route::post('images/product', [ProductController::class, 'addImage']);
